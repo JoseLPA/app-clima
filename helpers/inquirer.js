@@ -10,11 +10,11 @@ const menuOpts = [
     choices: [
         {
             value: 1,
-            name: `${'1.'.cyan} Buscar ciudad`
+            name: `${'1.'.cyan} Buscar clima de un lugar`
         },
         {
             value: 2,
-            name: `${'2.'.cyan} Historial`
+            name: `${'2.'.cyan} Historial de busquedas`
         },
         {
             value: 0,
@@ -61,12 +61,12 @@ const leerInput = async(message) =>{
     return desc;
 }
 
-const listadoTareasBorrar = async(tareas = []) =>{
-    const choices = tareas.map( (tarea, i) =>{
+const listar = async(arreglo = []) =>{
+    const choices = arreglo.map( (arr, i) =>{
         const indice = `${i + 1}.`.cyan;
         return {
-            value: tarea.id,
-            name: `${indice} ${tarea.desc}`
+            value: arr.id,
+            name: `${indice} ${arr.nombre}`
         }
     });
 
@@ -79,7 +79,7 @@ const listadoTareasBorrar = async(tareas = []) =>{
         {
             type: 'list',
             name: 'id',
-            message: 'Borrar',
+            message: 'Seleccione la opcion que estaba buscando:',
             choices
         }
     ]
@@ -122,4 +122,4 @@ const mostrarListadoChecklist = async(tareas = []) =>{
     return ids;
 }
  
-export { inquirerMenu, pausa, leerInput, listadoTareasBorrar, confirmar, mostrarListadoChecklist };
+export { inquirerMenu, pausa, leerInput, listar, confirmar, mostrarListadoChecklist };
